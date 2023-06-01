@@ -3,7 +3,19 @@ import requests
 import openpyxl
 import concurrent.futures
 
+"""
+Fleet filter
 
+This is a real project for one of my customer that had a big list of 
+different fligth companies' cites and wanted to find the ones that were
+specialised for charters and fleets. So, this script goes to every cite
+provided in the csv file and filtering them to the ones that specialised 
+on fleets and charters ang provides the list contains of them.
+
+Auther: Erik Badalyan
+Date: December 2022
+
+"""
 def get_urls_(url_):
     wrkbk = openpyxl.load_workbook(url_)
     sh = wrkbk.active
@@ -40,7 +52,7 @@ if __name__ == "__main__":
     new_data = []
     idx = 0
     with concurrent.futures.ThreadPoolExecutor() as executor:
-        url = r"C:\Users\erikb\Desktop\New Microsoft Excel Worksheet.xlsx"
+        url = r"C:\Users\erikb\PycharmProjects\Python_Aua\New folder\Web Scraping\Roman_Test_Little.xlsx"
         urls = get_urls_(url)
         executor.map(new_data_, urls)
     print('new data - ', list(filter(lambda true_url: true_url, new_data)), end='\n\n')
