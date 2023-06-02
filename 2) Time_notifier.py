@@ -6,32 +6,36 @@ import smtplib
 """
 Time notifier:
 
-By using these script it is possible to set any notifier of any type 
-of changes of a certain cite that will inform you by sending mail with
+By using these scripts, it is possible to set any notifier of any type 
+of changes to a certain site that will inform you by sending mail with
 any content and subject that you want.
 
-In these example, program sends mails if the World time is 16:22.
+In this example, the program sends emails if the World time is 1:15.
 
 Author: Erik Badalyan
-Date: June 2023
 
 """
 
 
 while True:
-    url = 'https://www.google.com/search?q=clock&sxsrf=ALiCzsaQ9gsBJZ7Xq83pse4bsrF72ICZTg%3A1672315684223&ei=JIOtY6mdDduCxc8P7u2Q8Ag&ved=0ahUKEwipv72y5Z78AhVbQfEDHe42BI4Q4dUDCA8&uact=5&oq=clock&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIECAAQQzIFCAAQkQIyCAguEIAEENQCMg4ILhCABBDHARCvARDLATIFCAAQgAQyCAgAEIAEEMsBMggILhDUAhCABDIICAAQgAQQywEyBQgAEIAEMggIABCABBDLAToECAAQRzoECCMQJzoLCC4QgAQQxwEQ0QM6BQguEIAEOgsILhCABBDHARCvAToOCC4QgAQQxwEQrwEQ1AI6DgguEIAEEMcBENEDENQCSgQIQRgASgQIRhgAUJIbWI4fYIIjaABwAngAgAGrAYgB7QWSAQMwLjWYAQCgAQHIAQjAAQE&sclient=gws-wiz-serp'
+    url = "https://www.google.com/search?q=clock&sxsrf=ALiCzsaQ9gsBJZ7Xq83pse4bsrF72ICZTg%3A1672315684223&ei" \
+          "=JIOtY6mdDduCxc8P7u2Q8Ag&ved=0ahUKEwipv72y5Z78AhVbQfEDHe42BI4Q4dUDCA8&uact=5&oq=clock&gs_lcp" \
+          "=Cgxnd3Mtd2l6LXNlcnAQAzIECAAQQzIFCAAQkQIyCAguEIAEENQCMg4ILhCABBDHARCvARDLATIFCAAQgAQyCAgAEIAEEMsBM" \
+          "ggILhDUAhCABDIICAAQgAQQywEyBQgAEIAEMggIABCABBDLAToECAAQRzoECCMQJzoLCC4QgAQQxwEQ0QM6BQguEIAEOgsILhCABBD" \
+          "HARCvAToOCC4QgAQQxwEQrwEQ1AI6DgguEIAEEMcBENEDENQCSgQIQRgASgQIRhgAUJIbWI4fYIIjaABwAngAgAGrAYgB7QWSAQMwLjWYA" \
+          "QCgAQHIAQjAAQE&sclient=gws-wiz-serp "
     url_req = requests.get(url)
 
     soup = BeautifulSoup(url_req.text, 'html.parser')
     world_time = soup.find('div', class_='BNeawe iBp4i AP7Wnd').text
     print(world_time)
-    if world_time == '16:22':
+    if world_time == '13:15':
         smt = smtplib.SMTP('smtp.gmail.com', 587)
         smt.ehlo()
         smt.starttls()
         smt.login("erik.badalyan700@gmail.com", 'avipyqvwrzjlbjok')
-        smt.sendmail('erik.badalyan700@gmail.com',
-                     'erik.badalyan700@gmail.com',
+        smt.sendmail("erik.badalyan700@gmail.com",
+                     "erik.badalyan700@gmail.com",
                      f"Subject: World_time\n\nTime changed")
         print('finish changed')
     time.sleep(10)

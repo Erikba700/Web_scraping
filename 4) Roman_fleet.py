@@ -6,16 +6,17 @@ import concurrent.futures
 """
 Fleet filter
 
-This is a real project for one of my customer that had a big list of 
-different fligth companies' cites and wanted to find the ones that were
-specialised for charters and fleets. So, this script goes to every cite
-provided in the csv file and filtering them to the ones that specialised 
-on fleets and charters ang provides the list contains of them.
+This is a real project for one of my customers that had a big list of 
+different flight companies' sites and wanted to find the ones that were
+specialized for charters and fleets. So, this script goes to every site
+provided in the CSV file and filtering them to the ones that specialized 
+on fleets and charters and provides the list containing them.
 
 Auther: Erik Badalyan
-Date: December 2022
 
 """
+
+
 def get_urls_(url_):
     wrkbk = openpyxl.load_workbook(url_)
     sh = wrkbk.active

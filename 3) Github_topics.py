@@ -13,6 +13,8 @@ Author: Erik Badalyan
 Date: Nov 2022
 
 """
+
+
 def getting_topics(site_url: str) -> tuple:     # Creating the csv of the topics
     # Requesting and parsering with Beautifulsoup:
     req = requests.get(site_url)
