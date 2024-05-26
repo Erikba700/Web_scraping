@@ -106,6 +106,7 @@ def check(prev_count):
 stack = []
 
 while not keyboard.is_pressed("q"):
+    # remember the first color than press c and press the first color
     while keyboard.is_pressed("c"):
         get_xy()
         while True:
