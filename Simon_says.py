@@ -2,11 +2,17 @@ import time
 import pyautogui as py
 import keyboard
 
-# https://www.coolmathgames.com/0-color-memory#immersiveModal
-# green: X:  343 Y:  681 RGB: ( 33, 104,  33)
-# red: X:  346 Y:  989 RGB: ( 32,  32, 173)
-# blue: X:  648 Y: 1006 RGB: (166,  26,  26)
-# yellow: X:  653 Y:  688 RGB: (171, 164,  31)
+'''
+Simon says automation.
+
+If you open this link https://www.coolmathgames.com/0-color-memory#immersiveModal
+which is the simon says game and run the program it will remember the 
+order of the colors and will press the right colors automatically.
+
+Author: Erik Badalyan
+Date: April 2024
+
+'''
 
 
 def click(action_list):
@@ -105,12 +111,13 @@ def check(prev_count):
 
 stack = []
 
-while not keyboard.is_pressed("q"):
-    # remember the first color than press c and press the first color
-    while keyboard.is_pressed("c"):
-        get_xy()
-        while True:
-            check(len(stack))
-            time.sleep(0.1)
-            click(stack)
-            time.sleep(0.05)
+if __name__ == '__main__':
+    while not keyboard.is_pressed("q"):  # It is quit condition
+        # remember the first color than press c and press the first color
+        while keyboard.is_pressed("c"):
+            get_xy()
+            while True:
+                check(len(stack))
+                time.sleep(0.1)
+                click(stack)
+                time.sleep(0.05)
