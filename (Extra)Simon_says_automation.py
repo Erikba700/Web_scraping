@@ -12,6 +12,10 @@ order of the colors and will press the right colors automatically.
 Author: Erik Badalyan
 Date: April 2024
 
+This code is unlikely to work due to the following reason:
+
+1. For color_center = py.locateCenterOnScreen('red.png', confidence=0.95, grayscale=False)
+variables the red/blue/yellow/green.png files are missing.
 '''
 
 
